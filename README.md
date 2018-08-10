@@ -28,6 +28,7 @@ $resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
 
 ### Web Code
 Ini adalah kode web yang disupport oleh SosmedAPI
+
 | Web | Code |
 | --- | --- |
 | Instagram | ig |
@@ -38,6 +39,7 @@ Ini adalah kode web yang disupport oleh SosmedAPI
 ### API Instagram 
 #### User Info
 Untuk mendapatkan info dari user berdasarkan userid ataupun username (salah satunya saja). Jika userId tersedia, maka akan dipilih userId.
+
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | userId | Big int | **required** valid instagram userid |
