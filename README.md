@@ -13,7 +13,7 @@ $token = 'xxxxxx';
 $obj = new SosmedAPI();
 $obj->setToken($token);
 
-$obj->json(WEB_CODENAME, REQUEST_TYPE, REQUEST_PARAM);
+$obj->json((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
 
 //example
 $result = $obj->json('ig', 'media_info', ['userId'=> 23232323, 'userName']);
