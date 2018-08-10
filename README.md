@@ -252,7 +252,115 @@ Untuk mendapatkan comment-comment pada suatu media/postingan tersebut.
 	}
 }
 ```
+#### User Story
+Untuk mendapatkan user story yang paling baru
 
+
+```json
+{
+	"ok": 0,
+	"data": {
+		"smd_type": "instagram",
+		"id": "8308483xxx",
+		"latest_reel_media": "153386xxx",
+		"expiring_at": 1533950219,
+		"seen": "1533857666",
+		"can_reply": true,
+		"can_reshare": true,
+		"reel_type": "user_reel",
+		"user": {
+			"pk": "830848xxx",
+			"username": "hakixxx",
+			"full_name": "I   xxx,
+			"is_private": false,
+			"profile_pic_url": "https://instagram.fcgk10-1.fna.fbcdn.net/vp/8f848xxx.jpg",
+			"profile_pic_id": "1833386419454626894_83084xxx",
+			"friendship_status": {
+				"following": true,
+				"followed_by": false,
+				"blocking": false,
+				"muting": false,
+				"is_private": false,
+				"incoming_request": false,
+				"outgoing_request": false,
+				"is_bestie": false
+			},
+			"is_verified": false
+		},
+		"items": [
+			{
+				"taken_at": "1533822620",
+				"pk": "184216015714xxxx",
+				"id": "1842160157145334637_83084xxxx",
+				"device_timestamp": "3131785595798",
+				"media_type": 1,
+				"code": "BmQqucaxxxx",
+				"client_cache_key": "MTg0MjE2MDE1NzE0NTMzNDYxxx",
+				"filter_type": 0,
+				"image_versions2": {
+					"candidates": [
+						{
+							"width": 1080,
+							"height": 1920,
+							"url": "https://instagram.fcgk10-1.fna.fbcdn.net/vp/ff8691a3aba370669"
+						},
+						{
+							"width": 240,
+							"height": 426,
+							"url": "https://instagram.fcgk10-1.fna.fbcdn.net/vp/5823bd5e98"
+						}
+					]
+				},
+				"original_width": 1080,
+				"original_height": 1920,
+				"caption_position": 0,
+				"is_reel_media": true,
+				"user": {
+					"pk": "8308483xxx",
+					"username": "hakxxx",
+					"full_name": "I xxxxN",
+					"is_private": false,
+					"profile_pic_url": "https://instagram.fcgk10-1.fna.fbcdn.net/vp/8f8489ef.jpg",
+					"profile_pic_id": "1833386419454626894_83084xxx",
+					"is_verified": false,
+					"has_anonymous_profile_picture": false,
+					"reel_auto_archive": "unset",
+					"is_unpublished": false,
+					"is_favorite": false
+				},
+				"caption": null,
+				"caption_is_edited": false,
+				"photo_of_you": false,
+				"can_viewer_save": true,
+				"organic_tracking_token": "eyJ2ZXJzaW9uIjo1LCJwYXlsb2FkIjp7ImlzX2FuYWx5dGljc190cmFjaxxxx",
+				"expiring_at": 1533909020,
+				"can_reshare": true,
+				"story_events": [],
+				"story_hashtags": [],
+				"story_polls": [],
+				"story_feed_media": [],
+				"story_sound_on": [],
+				"creative_config": null,
+				"reel_mentions": [],
+				"story_locations": [],
+				"story_sliders": [],
+				"story_questions": [],
+				"story_friend_lists": [],
+				"story_music_stickers": [],
+				"story_highlight": [],
+				"story_product_items": [],
+				"supports_reel_reactions": false,
+				"show_one_tap_fb_share_tooltip": true,
+				"has_shared_to_fb": 0
+			},
+			...
+		],
+		"prefetch_count": 0,
+		"has_besties_media": false,
+		"status": "ok"
+	}
+}
+```
 
 You can use the [editor on GitHub](https://github.com/plonknimbuzz/sosmed-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
