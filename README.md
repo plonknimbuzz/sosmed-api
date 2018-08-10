@@ -24,32 +24,6 @@ $resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323]);
 $resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
 
 ```
-# Sosmed API
-
-## Authentication
- - Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda.
- - Silahkan regenerate token jika diperlukan
-
-## Tools SosmedAPI class
-Anda bisa menggunakan tools/library manapun, atau juga bisa menggunakan native curl php. Akan tetapi sudah disediakan simple wrapper class untuk memanggil API ini. Class ini dibuat berdasarkan [php-curl-class](https://github.com/php-curl-class/php-curl-class) sehingga jika ingin dikembangkan bisa lebih mudah dilakukan.  
-
-Download dan Include class SosmedAPI seperti berikut:
-```php
-<?php
-require_once 'SosmedAPI.php';
-$token = 'xxxxxx';
-$apiUrl = 'http://api.domain.com';
-//init class
-$obj = new SosmedAPI($apiUrl);
-$obj->setToken($token);
-
-$obj->api((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
-
-//example
-$resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323]);
-$resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
-
-```
 ## API documentation 
 
 ### Web Code
