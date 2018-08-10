@@ -16,7 +16,8 @@ $obj->setToken($token);
 $obj->json((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
 
 //example
-$result = $obj->json('ig', 'media_info', ['userId'=> 23232323, 'userName']);
+$resultIg = $obj->json('ig', 'user_info', ['userId'=> 23232323, 'userName']);
+$resultTw = $obj->json('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
 
 ```
 
