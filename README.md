@@ -1,4 +1,24 @@
-## Welcome to GitHub Pages
+# Sosmed API
+
+## Autentifikasi
+Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda. 
+
+## Cara penggunaan
+
+```php
+<?php
+require_once 'SosmedAPI/autoload.php';
+$token = 'xxxxxx';
+
+$obj = new SosmedAPI();
+$obj->setToken($token);
+
+$obj->json(WEB_CODENAME, REQUEST_TYPE, REQUEST_PARAM);
+
+//example
+$result = $obj->json('ig', 'media_info', ['userId'=> 23232323, 'userName']);
+
+```
 
 You can use the [editor on GitHub](https://github.com/plonknimbuzz/sosmed-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
