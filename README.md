@@ -271,7 +271,7 @@ Untuk mendapatkan user story yang paling baru
 		"user": {
 			"pk": "830848xxx",
 			"username": "hakixxx",
-			"full_name": "I   xxx,
+			"full_name": "I   xxx",
 			"is_private": false,
 			"profile_pic_url": "https://instagram.fcgk10-1.fna.fbcdn.net/vp/8f848xxx.jpg",
 			"profile_pic_id": "1833386419454626894_83084xxx",
