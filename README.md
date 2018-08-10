@@ -210,7 +210,7 @@ Untuk mendapatkan comment-comment pada suatu media/postingan tersebut.
 		"comment_count": 2286,
 		"has_more_comments": false,
 		"has_more_headload_comments": true,
-		"next_min_id": "{\"cached_comments_cursor\": \"17860458280xxx\", \"bifilter_token\": \"KKEBAIS9VGyFtj8Axxi78xxxx"}",
+		"next_min_id": "{\"cached_comments_cursor\": \"17860458280xxx\", \"bifilter_token\": \"KKEBAIS9VGyFtj8Axxi78xxxx\"}",
 		"comment_likes_enabled": true,
 		"comments": [
 			{
