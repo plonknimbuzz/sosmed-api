@@ -1,10 +1,10 @@
 # Sosmed API
 
-## Autentifikasi
+## Authentication
 Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda. 
 
-## Cara penggunaan
-
+## Basic Usage
+Include class sosmedAPI seperti berikut:
 ```php
 <?php
 require_once 'SosmedAPI/autoload.php';
