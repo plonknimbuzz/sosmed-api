@@ -1,4 +1,5 @@
 # Sosmed API
+[online documentation](https://plonknimbuzz.github.io/sosmed-api/)
 
 ## Authentication
  - Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda.
