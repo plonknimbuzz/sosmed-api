@@ -1,25 +1,51 @@
 # Sosmed API
 
 ## Authentication
-Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda. 
+ - Login ke *web xxx* dengan user dan password yang diberikan, lalu dapatkan token anda.
+ - Silahkan regenerate token jika diperlukan
 
-## Basic Usage
-Include class sosmedAPI seperti berikut:
+## Tools SosmedAPI class
+Anda bisa menggunakan tools/library manapun, atau juga bisa menggunakan native curl php. Akan tetapi sudah disediakan simple wrapper class untuk memanggil API ini. Class ini dibuat berdasarkan [php-curl-class](https://github.com/php-curl-class/php-curl-class) sehingga jika ingin dikembangkan bisa lebih mudah dilakukan.  
+
+Download dan Include class SosmedAPI seperti berikut:
 ```php
 <?php
-require_once 'SosmedAPI/autoload.php';
+require_once 'SosmedAPI.php';
 $token = 'xxxxxx';
-
-$obj = new SosmedAPI();
+$apiUrl = 'http://api.domain.com';
+//init class
+$obj = new SosmedAPI($apiUrl);
 $obj->setToken($token);
 
-$obj->json((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
+$obj->api((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
 
 //example
-$resultIg = $obj->json('ig', 'user_info', ['userId'=> 23232323]);
-$resultTw = $obj->json('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
+$resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323]);
+$resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
 
 ```
+## API documentation 
+
+### Web Code
+Ini adalah kode web yang disupport oleh SosmedAPI
+| Web | Code |
+| --- | --- |
+| Instagram | ig |
+| Twitter | tw |
+| Youtube | yt |
+| Facebook | fb |
+
+### API Instagram 
+#### User Info
+Untuk mendapatkan info dari user berdasarkan userid ataupun username (salah satunya saja). Jika userId tersedia, maka akan dipilih userId.
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| userId | Big int | **required** valid instagram userid |
+| userName | string | **required** valid instagram username |
+
+
+
+
 
 You can use the [editor on GitHub](https://github.com/plonknimbuzz/sosmed-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
