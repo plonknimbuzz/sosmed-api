@@ -21,8 +21,8 @@ $obj->setToken($token);
 $obj->api((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
 
 //example
-$resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323]);
-$resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'language'=> 'en']);
+$resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323])->output(); //json
+$resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'otherParam'=> 'otherValue'])->output_array();//array
 
 ```
 ## API documentation 
@@ -1261,6 +1261,7 @@ Mencari info terhadap suatu video
 ```
 
 
+
 ### Changelog
 
-2018-08-17 : initial commit
+- 2018-08-17 : init commit
