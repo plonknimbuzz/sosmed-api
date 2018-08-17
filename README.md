@@ -230,6 +230,11 @@ Untuk mendapatkan comment-comment pada suatu media/postingan tersebut.
 #### User Story
 Untuk mendapatkan user story yang paling baru
 
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| userId | big int | **required** valid instagram userid (*prefer*) |
+| userName | string | **required** valid instagram username |
+
 
 ```json
 {
@@ -337,38 +342,925 @@ Untuk mendapatkan user story yang paling baru
 }
 ```
 
-You can use the [editor on GitHub](https://github.com/plonknimbuzz/sosmed-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+#### Hashtag Media
+Untuk list media dari suatu hashtag (valid hashtag)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| hashtag | string | **required** hashtag keyword without \# |
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```json
+{
+    "ok":0,
+    "data":{
+        "smd_type":"instagram",
+        "hashtag_media":[ 
+			//media info array
+		]
+	}
+}
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### Hashtag Info
+Untuk mendapatkan informasi mengenai suatu hashtag (valid hashtag)
 
-### Jekyll Themes
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| hashtag | string | **required** valid instagram hashtag without \# |
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/plonknimbuzz/sosmed-api/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "hashtag_id":"17842287xxxxx",
+        "name":"jokxxx",
+        "media_count":8xxx,
+        "allow_following":1,
+        "allow_muting_story":true,
+        "non_violating":1
+    }
+}
+```
 
-### Support or Contact
+#### Hashtag Search
+Untuk mencari list hashtag dari suatu keyword
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| hashtag | string | **required** hashtag keyword without \# |
+
+```json
+{
+	"ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "hashtag_search":[
+            {
+                "hashtag_id":"17842287427071865",
+                "name":"jokowi",
+                "media_count":845547,
+                "allow_following":null,
+                "allow_muting_story":null,
+                "non_violating":null
+            },
+			//...
+		]
+	}
+}
+```
+
+#### Location Search
+
+Untuk mencari list lokasi berdasarkan posisi garis bujur dan keyword
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| lat | string | **required** latitude |
+| lng | string | **required** longitude |
+| keyword | string | *optional* If provided, Instagram does a worldwide location text search, but lists locations closest to your lat/lng first. |
+
+
+```json
+{
+    "ok":0,
+    "data":{
+        "smd_type":"instagram",
+        "ok":1,
+        "location_media":[
+            {
+                "lat":-6.1701595929695,
+                "lng":106.8401373358,
+                "address":"Jakarta",
+                "external_id":"154609294718013",
+                "external_id_source":"facebook_places",
+                "name":"Tugu Monumen Republik Indonesia Monas Jakarta Pusat",
+                "minimum_age":0
+            },
+			//...
+		]
+	}
+}
+
+```
+
+
+#### Location FB Search
+
+Untuk mencari list lokasi Facebook berdasarkan keyword. Posisi yang ditemukan tidak dapat digunakan untuk di attach pada IG, hasil ini bisa digunakan untuk location search
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| keyword | string | *required* search keyword. |
+
+
+```json
+{
+	"ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "location_fb_search":[
+            {
+                "location":{
+                    "pk":"1022293376",
+                    "name":"Monas",
+                    "address":"Jalan Medan Merdeka",
+                    "city":"Jakarta, Indonesia",
+                    "short_name":"Monas",
+                    "lng":106.82596866742,
+                    "lat":-6.1767270457065,
+                    "external_source":"facebook_places",
+                    "facebook_places_id":"739273872776036"
+                },
+                "title":"Monas",
+                "subtitle":"Jalan Medan Merdeka, Jakarta, Indonesia",
+                "media_bundles":[
+
+                ]
+            },
+			//...
+		]
+	}
+}
+```
+
+#### Location Media
+
+Untuk mencari list media dari suatu lokasi 
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| location_id | Big Int | *required* valid instagram location id. |
+
+
+```json
+{
+	"ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "location_media":[
+			//media info array
+		]
+	}
+}
+```
+
+### Twitter
+
+#### User Info
+
+Untuk mencari info mengenai user 
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| userId | big int | **required** valid twitter userid (*prefer*) |
+| userName | string | **required** valid twitter username |
+
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"twitter",
+        "user_info":{
+            "id":1146609174,
+            "id_str":"1146609174",
+            "name":"Eko Satrio P",
+            "screen_name":"plonknimbuzz",
+            "location":"jakarta",
+            "profile_location":null,
+            "description":"just ordinary guy",
+            "url":"https:\/\/t.co\/jirDefsoVk",
+            "entities":{
+                "url":{
+                    "urls":[
+                        {
+                            "url":"https:\/\/t.co\/jirDefsoVk",
+                            "expanded_url":"http:\/\/simonita.org",
+                            "display_url":"simonita.org",
+                            "indices":[
+                                0,
+                                23
+                            ]
+                        }
+                    ]
+                },
+                "description":{
+                    "urls":[
+
+                    ]
+                }
+            },
+            "protected":false,
+            "followers_count":20,
+            "friends_count":5,
+            "listed_count":0,
+            "created_at":"Mon Feb 04 00:31:53 +0000 2013",
+            "favourites_count":11,
+            "utc_offset":null,
+            "time_zone":null,
+            "geo_enabled":false,
+            "verified":false,
+            "statuses_count":63,
+            "lang":"en",
+            "status":{
+                "created_at":"Sat Jul 07 19:37:54 +0000 2018",
+                "id":"1015681333358522368",
+                "id_str":"1015681333358522368",
+                "text":"RT @plonknimbuzz: nanana",
+                "truncated":false,
+                "entities":{
+                    "hashtags":[
+
+                    ],
+                    "symbols":[
+
+                    ],
+                    "user_mentions":[
+                        {
+                            "screen_name":"plonknimbuzz",
+                            "name":"Eko Satrio P",
+                            "id":1146609174,
+                            "id_str":"1146609174",
+                            "indices":[
+                                3,
+                                16
+                            ]
+                        }
+                    ],
+                    "urls":[
+
+                    ]
+                },
+                "source":"<a href=\"http:\/\/example.com\" rel=\"nofollow\">auto-twitter-plonk<\/a>",
+                "in_reply_to_status_id":null,
+                "in_reply_to_status_id_str":null,
+                "in_reply_to_user_id":null,
+                "in_reply_to_user_id_str":null,
+                "in_reply_to_screen_name":null,
+                "geo":null,
+                "coordinates":null,
+                "place":null,
+                "contributors":null,
+                "retweeted_status":{
+                    "created_at":"Sat Jul 07 10:01:52 +0000 2018",
+                    "id":"1015536367785336832",
+                    "id_str":"1015536367785336832",
+                    "text":"nanana",
+                    "truncated":false,
+                    "entities":{
+                        "hashtags":[
+
+                        ],
+                        "symbols":[
+
+                        ],
+                        "user_mentions":[
+
+                        ],
+                        "urls":[
+
+                        ]
+                    },
+                    "source":"<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
+                    "in_reply_to_status_id":null,
+                    "in_reply_to_status_id_str":null,
+                    "in_reply_to_user_id":null,
+                    "in_reply_to_user_id_str":null,
+                    "in_reply_to_screen_name":null,
+                    "geo":null,
+                    "coordinates":null,
+                    "place":null,
+                    "contributors":null,
+                    "is_quote_status":false,
+                    "retweet_count":2,
+                    "favorite_count":2,
+                    "favorited":true,
+                    "retweeted":true,
+                    "lang":"in"
+                },
+                "is_quote_status":false,
+                "retweet_count":2,
+                "favorite_count":0,
+                "favorited":true,
+                "retweeted":true,
+                "lang":"in"
+            },
+            "contributors_enabled":false,
+            "is_translator":false,
+            "is_translation_enabled":false,
+            "profile_background_color":"C0DEED",
+            "profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile":false,
+            "profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+            "profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+            "profile_link_color":"1DA1F2",
+            "profile_sidebar_border_color":"C0DEED",
+            "profile_sidebar_fill_color":"DDEEF6",
+            "profile_text_color":"333333",
+            "profile_use_background_image":true,
+            "has_extended_profile":false,
+            "default_profile":true,
+            "default_profile_image":true,
+            "following":false,
+            "follow_request_sent":false,
+            "notifications":false,
+            "translator_type":"none"
+        }
+    }
+}
+```
+
+#### Search Tweet
+
+Mencari tweet berdasarkan keyword
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| keyword | string | **required** keyword |
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"twitter",
+        "search_tweet":{
+            "statuses":[
+                {
+                    "created_at":"Fri Aug 17 06:19:14 +0000 2018",
+                    "id":"1030338241822507008",
+                    "id_str":"1030338241822507008",
+                    "text":"RT @Join_Jabar: 2019 Tetap Join\n#JokowiMarufAminJOIN \nBaarakallah\n@jokowi\n@cakimiNOW\n@arjuna16sp @pkbSULTRA @DPP_PKB @JOIN_BANTEN @joinjomb\u2026",
+                    "truncated":false,
+                    "entities":{
+                        "hashtags":[
+                            {
+                                "text":"JokowiMarufAminJOIN",
+                                "indices":[
+                                    32,
+                                    52
+                                ]
+                            }
+                        ],
+                        "symbols":[
+
+                        ],
+                        "user_mentions":[
+                            {
+                                "screen_name":"Join_Jabar",
+                                "name":"JOIN JABAR",
+                                "id":"856053640095703040",
+                                "id_str":"856053640095703040",
+                                "indices":[
+                                    3,
+                                    14
+                                ]
+                            },
+                            {
+                                "screen_name":"jokowi",
+                                "name":"Joko Widodo",
+                                "id":366987179,
+                                "id_str":"366987179",
+                                "indices":[
+                                    66,
+                                    73
+                                ]
+                            },
+                            {
+                                "screen_name":"cakimiNOW",
+                                "name":"a muhaimin iskandar",
+                                "id":1490116879,
+                                "id_str":"1490116879",
+                                "indices":[
+                                    74,
+                                    84
+                                ]
+                            },
+                            {
+                                "screen_name":"arjuna16sp",
+                                "name":"Arjuna SP (Cak JUN)",
+                                "id":"889910471561793541",
+                                "id_str":"889910471561793541",
+                                "indices":[
+                                    85,
+                                    96
+                                ]
+                            },
+                            {
+                                "screen_name":"pkbSULTRA",
+                                "name":"DPW PKB SULTRA",
+                                "id":"1005835075437514752",
+                                "id_str":"1005835075437514752",
+                                "indices":[
+                                    97,
+                                    107
+                                ]
+                            },
+                            {
+                                "screen_name":"DPP_PKB",
+                                "name":"DPP PKB",
+                                "id":748953283,
+                                "id_str":"748953283",
+                                "indices":[
+                                    108,
+                                    116
+                                ]
+                            },
+                            {
+                                "screen_name":"JOIN_BANTEN",
+                                "name":"JOIN BANTEN (Jokowi_Ma'ruf Amin)",
+                                "id":"951393858708914177",
+                                "id_str":"951393858708914177",
+                                "indices":[
+                                    117,
+                                    129
+                                ]
+                            }
+                        ],
+                        "urls":[
+
+                        ]
+                    },
+                    "metadata":{
+                        "iso_language_code":"in",
+                        "result_type":"recent"
+                    },
+                    "source":"<a href=\"http:\/\/twitter.com\" rel=\"nofollow\">Twitter Web Client<\/a>",
+                    "in_reply_to_status_id":null,
+                    "in_reply_to_status_id_str":null,
+                    "in_reply_to_user_id":null,
+                    "in_reply_to_user_id_str":null,
+                    "in_reply_to_screen_name":null,
+                    "user":{
+                        "id":"985058014972358656",
+                        "id_str":"985058014972358656",
+                        "name":"JOIN PSiantar",
+                        "screen_name":"JoinPSiantar",
+                        "location":"Pematang Siantar, Indonesia",
+                        "description":"#JokowiCakImin2019",
+                        "url":null,
+                        "entities":{
+                            "description":{
+                                "urls":[
+
+                                ]
+                            }
+                        },
+                        "protected":false,
+                        "followers_count":400,
+                        "friends_count":683,
+                        "listed_count":0,
+                        "created_at":"Sat Apr 14 07:31:47 +0000 2018",
+                        "favourites_count":1359,
+                        "utc_offset":null,
+                        "time_zone":null,
+                        "geo_enabled":true,
+                        "verified":false,
+                        "statuses_count":1571,
+                        "lang":"id",
+                        "contributors_enabled":false,
+                        "is_translator":false,
+                        "is_translation_enabled":false,
+                        "profile_background_color":"F5F8FA",
+                        "profile_background_image_url":null,
+                        "profile_background_image_url_https":null,
+                        "profile_background_tile":false,
+                        "profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1027930828234358786\/agXbFPHv_normal.jpg",
+                        "profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1027930828234358786\/agXbFPHv_normal.jpg",
+                        "profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/985058014972358656\/1533912670",
+                        "profile_link_color":"1DA1F2",
+                        "profile_sidebar_border_color":"C0DEED",
+                        "profile_sidebar_fill_color":"DDEEF6",
+                        "profile_text_color":"333333",
+                        "profile_use_background_image":true,
+                        "has_extended_profile":true,
+                        "default_profile":true,
+                        "default_profile_image":false,
+                        "following":false,
+                        "follow_request_sent":false,
+                        "notifications":false,
+                        "translator_type":"none"
+                    },
+                    "geo":null,
+                    "coordinates":null,
+                    "place":null,
+                    "contributors":null,
+                    "retweeted_status":{
+                        "created_at":"Sat Aug 11 02:00:23 +0000 2018",
+                        "id":"1028098774155980800",
+                        "id_str":"1028098774155980800",
+                        "text":"2019 Tetap Join\n#JokowiMarufAminJOIN \nBaarakallah\n@jokowi\n@cakimiNOW\n@arjuna16sp @pkbSULTRA @DPP_PKB @JOIN_BANTEN\u2026 https:\/\/t.co\/hygl2tv96t",
+                        "truncated":true,
+                        "entities":{
+                            "hashtags":[
+                                {
+                                    "text":"JokowiMarufAminJOIN",
+                                    "indices":[
+                                        16,
+                                        36
+                                    ]
+                                }
+                            ],
+                            "symbols":[
+
+                            ],
+                            "user_mentions":[
+                                {
+                                    "screen_name":"jokowi",
+                                    "name":"Joko Widodo",
+                                    "id":366987179,
+                                    "id_str":"366987179",
+                                    "indices":[
+                                        50,
+                                        57
+                                    ]
+                                },
+                                {
+                                    "screen_name":"cakimiNOW",
+                                    "name":"a muhaimin iskandar",
+                                    "id":1490116879,
+                                    "id_str":"1490116879",
+                                    "indices":[
+                                        58,
+                                        68
+                                    ]
+                                },
+                                {
+                                    "screen_name":"arjuna16sp",
+                                    "name":"Arjuna SP (Cak JUN)",
+                                    "id":"889910471561793541",
+                                    "id_str":"889910471561793541",
+                                    "indices":[
+                                        69,
+                                        80
+                                    ]
+                                },
+                                {
+                                    "screen_name":"pkbSULTRA",
+                                    "name":"DPW PKB SULTRA",
+                                    "id":"1005835075437514752",
+                                    "id_str":"1005835075437514752",
+                                    "indices":[
+                                        81,
+                                        91
+                                    ]
+                                },
+                                {
+                                    "screen_name":"DPP_PKB",
+                                    "name":"DPP PKB",
+                                    "id":748953283,
+                                    "id_str":"748953283",
+                                    "indices":[
+                                        92,
+                                        100
+                                    ]
+                                },
+                                {
+                                    "screen_name":"JOIN_BANTEN",
+                                    "name":"JOIN BANTEN (Jokowi_Ma'ruf Amin)",
+                                    "id":"951393858708914177",
+                                    "id_str":"951393858708914177",
+                                    "indices":[
+                                        101,
+                                        113
+                                    ]
+                                }
+                            ],
+                            "urls":[
+                                {
+                                    "url":"https:\/\/t.co\/hygl2tv96t",
+                                    "expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1028098774155980800",
+                                    "display_url":"twitter.com\/i\/web\/status\/1\u2026",
+                                    "indices":[
+                                        115,
+                                        138
+                                    ]
+                                }
+                            ]
+                        },
+                        "metadata":{
+                            "iso_language_code":"in",
+                            "result_type":"recent"
+                        },
+                        "source":"<a href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\">Twitter for Android<\/a>",
+                        "in_reply_to_status_id":null,
+                        "in_reply_to_status_id_str":null,
+                        "in_reply_to_user_id":null,
+                        "in_reply_to_user_id_str":null,
+                        "in_reply_to_screen_name":null,
+                        "user":{
+                            "id":"856053640095703040",
+                            "id_str":"856053640095703040",
+                            "name":"JOIN JABAR",
+                            "screen_name":"Join_Jabar",
+                            "location":"Jawa Barat, Indonesia",
+                            "description":"Jokowi - Ma'ruf Amin 2019",
+                            "url":null,
+                            "entities":{
+                                "description":{
+                                    "urls":[
+
+                                    ]
+                                }
+                            },
+                            "protected":false,
+                            "followers_count":1414,
+                            "friends_count":735,
+                            "listed_count":0,
+                            "created_at":"Sun Apr 23 07:54:27 +0000 2017",
+                            "favourites_count":3044,
+                            "utc_offset":null,
+                            "time_zone":null,
+                            "geo_enabled":false,
+                            "verified":false,
+                            "statuses_count":3475,
+                            "lang":"id",
+                            "contributors_enabled":false,
+                            "is_translator":false,
+                            "is_translation_enabled":false,
+                            "profile_background_color":"F5F8FA",
+                            "profile_background_image_url":null,
+                            "profile_background_image_url_https":null,
+                            "profile_background_tile":false,
+                            "profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1027906168893534209\/r6O4yMyz_normal.jpg",
+                            "profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1027906168893534209\/r6O4yMyz_normal.jpg",
+                            "profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/856053640095703040\/1531653599",
+                            "profile_link_color":"1DA1F2",
+                            "profile_sidebar_border_color":"C0DEED",
+                            "profile_sidebar_fill_color":"DDEEF6",
+                            "profile_text_color":"333333",
+                            "profile_use_background_image":true,
+                            "has_extended_profile":false,
+                            "default_profile":true,
+                            "default_profile_image":false,
+                            "following":false,
+                            "follow_request_sent":false,
+                            "notifications":false,
+                            "translator_type":"none"
+                        },
+                        "geo":null,
+                        "coordinates":null,
+                        "place":null,
+                        "contributors":null,
+                        "is_quote_status":false,
+                        "retweet_count":8,
+                        "favorite_count":14,
+                        "favorited":false,
+                        "retweeted":false,
+                        "possibly_sensitive":false,
+                        "lang":"in"
+                    },
+                    "is_quote_status":false,
+                    "retweet_count":8,
+                    "favorite_count":0,
+                    "favorited":false,
+                    "retweeted":false,
+                    "lang":"in"
+                },
+                //...
+            ],
+            "search_metadata":{
+                "completed_in":0.046,
+                "max_id":"1030338241822507008",
+                "max_id_str":"1030338241822507008",
+                "next_results":"?max_id=1030338236701335552&q=jokowi&count=2&include_entities=1&result_type=recent",
+                "query":"jokowi",
+                "refresh_url":"?since_id=1030338241822507008&q=jokowi&result_type=recent&include_entities=1",
+                "count":2,
+                "since_id":0,
+                "since_id_str":"0"
+            }
+        }
+    }
+}
+```
+
+#### Search Location
+
+Mencari lokasi twitter
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| keyword | string | *optional* location keyword |
+| lat | string | *optional* latitude |
+| lng | string | *optional* longitude |
+
+**Note:** Required salah satu diantaranya
+
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"twitter",
+        "search_location":{
+            "result":{
+                "places":[
+                    {
+                        "id":"beddf2d6061ea32e",
+                        "url":"https:\/\/api.twitter.com\/1.1\/geo\/id\/beddf2d6061ea32e.json",
+                        "place_type":"admin",
+                        "name":"DKI Jakarta",
+                        "full_name":"DKI Jakarta, Indonesia",
+                        "country_code":"ID",
+                        "country":"Indonesia",
+                        "contained_within":[
+                            {
+                                "id":"ce7988d3a8b6f49f",
+                                "url":"https:\/\/api.twitter.com\/1.1\/geo\/id\/ce7988d3a8b6f49f.json",
+                                "place_type":"country",
+                                "name":"Indonesia",
+                                "full_name":"Indonesia",
+                                "country_code":"ID",
+                                "country":"Indonesia",
+                                "centroid":[
+                                    113.33412818144045,
+                                    0.11379699999999993
+                                ],
+                                "bounding_box":{
+                                    "type":"Polygon",
+                                    "coordinates":[
+                                        [
+                                            [
+                                                95.004677,
+                                                -11.007615
+                                            ],
+                                            [
+                                                95.004677,
+                                                5.906884
+                                            ],
+                                            [
+                                                141.0549412,
+                                                5.906884
+                                            ],
+                                            [
+                                                141.0549412,
+                                                -11.007615
+                                            ],
+                                            [
+                                                95.004677,
+                                                -11.007615
+                                            ]
+                                        ]
+                                    ]
+                                },
+                                "attributes":[
+
+                                ]
+                            }
+                        ],
+                        "centroid":[
+                            106.84823565767005,
+                            -6.23296
+                        ],
+                        "bounding_box":{
+                            "type":"Polygon",
+                            "coordinates":[
+                                [
+                                    [
+                                        106.6884,
+                                        -6.37657
+                                    ],
+                                    [
+                                        106.6884,
+                                        -6.08935
+                                    ],
+                                    [
+                                        106.980499,
+                                        -6.08935
+                                    ],
+                                    [
+                                        106.980499,
+                                        -6.37657
+                                    ],
+                                    [
+                                        106.6884,
+                                        -6.37657
+                                    ]
+                                ]
+                            ]
+                        },
+                        "attributes":[
+
+                        ]
+                    },
+                    //...
+                ]
+            },
+            "query":{
+                "url":"https:\/\/api.twitter.com\/1.1\/geo\/search.json?lat=&long=&query=jakarta",
+                "type":"search",
+                "params":{
+                    "accuracy":0,
+                    "granularity":"neighborhood",
+                    "query":"jakarta",
+                    "autocomplete":false,
+                    "trim_place":false
+                }
+            }
+        }
+    }
+}
+```
+
+
+### Youtube
+
+#### Video Info
+
+Mencari info terhadap suatu video
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| videoId | string | **required** valid youtube video Id |
+
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"youtube",
+        "video_info":{
+            "etag":"\"XI7nbFXulYBIpL0ayR_gDh3eu1k\/-O6k3CEnq-DTEAZHVXZ1MziLbW8\"",
+            "eventId":null,
+            "kind":"youtube#videoListResponse",
+            "nextPageToken":null,
+            "prevPageToken":null,
+            "visitorId":null,
+            "pageInfo":{
+                "resultsPerPage":1,
+                "totalResults":1
+            },
+            "items":[
+                {
+                    "etag":"\"XI7nbFXulYBIpL0ayR_gDh3eu1k\/AMM-c7x-fgO4SlET_nAUGruxENM\"",
+                    "id":"1ERsRZVRteI",
+                    "kind":"youtube#video",
+                    "snippet":{
+                        "categoryId":"20",
+                        "channelId":"UC1MiVrMfNrs5Ma4BetX-asA",
+                        "channelTitle":"JustWant2PlayAGame",
+                        "defaultAudioLanguage":null,
+                        "defaultLanguage":null,
+                        "description":"\ud83d\udc99Win Skins Now: https:\/\/gamdom.com\/tradeup\n\ud83d\udd34Subscribe for More Videos: http:\/\/goo.gl\/SS787Y\n\u25baMIRACLE- Invoker TI8 Perspective - What a Crazy Game (Liquid vs OG)\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\u25cf Submit your best Replay , Pls email:  justwanplayagame@gmail.com\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\u25cfSocial Media:\n\u25cf Facebook: https:\/\/www.facebook.com\/Justwanplayagame\/\n\u25cf Twitter: https:\/\/twitter.com\/justwanplayagam\n\u25cf VK: http:\/\/vk.com\/justwanplayagame\n\u25cf Google+: https:\/\/plus.google.com\/+JustWanPlayAGameBro\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n\ud83d\udd25My Dota 2 Playlists:\n\u25cf Miracle, Always Miracle: https:\/\/goo.gl\/Io5frD\n\u25cf Mushi, Be Like Mushi: https:\/\/goo.gl\/4SvCee\n\u25cf Midone, The Solo Mid One: https:\/\/goo.gl\/n29HVg\n\u25cf The International 2016 Highlights: https:\/\/goo.gl\/SJfzuR\n\u25cf !Attacker, The Best Kunkka: https:\/\/goo.gl\/GxY6Wc\n\u25cf Sumail, the Best Storm Spirit: https:\/\/goo.gl\/hYiG9D\n\u25cf Dendi, The Living Legend: https:\/\/goo.gl\/ejukAh\n\u25cf Arteezy, Positive Mental Attitude: https:\/\/goo.gl\/BRjquU\n\u25cf w33, The Imba w33haa: https:\/\/goo.gl\/Mwc7Pb\n\u25cf s4, The Son of Magnus: https:\/\/goo.gl\/NcY5It\n\u25cf Ar1se, The Best Magnus: https:\/\/goo.gl\/sYvMy7\n\u25cf Manila Major Epic Game: https:\/\/goo.gl\/xLIQ5q\n\u25cf Dota 2 Random Proplay-: https:\/\/goo.gl\/x2ynVV\n\u25cf TOP10\/Best Moments of Tournament: https:\/\/goo.gl\/5NJUH8\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\nWelcome to my JustWant2PlayAGame Dota 2  channel\nHere the find highlights from random pub match, random pro match, major tournaments and many other interesting dota movies. \nRemember to SUBSCRIBE to be notified when we publish new videos or highlights!\n\nDota 2 Team: OG, Wings, Secret, Fnatic, Liquid, LGD, IG, Newbee, EG, Navi, Empire, COL, Xctn, VGR, VG, VP, Ehome, TNC, Escape Gaming, Alliance, Mineski, LFY etc\n\nEnjoy and Make sure to subscribe to my channel if you liked the video!\n\nMatch id:\n4061952570",
+                        "liveBroadcastContent":"none",
+                        "publishedAt":"2018-08-17T08:18:31.000Z",
+                        "tags":[
+                            "Justwant2playagame",
+                            "dota 2",
+                            "dota",
+                            "miracle-",
+                            "highlights",
+                            "gameplay",
+                            "justwanplayagame",
+                            "9k",
+                            "9kmmr",
+                            "m-god"
+                        ],
+                        "title":"MIRACLE- Invoker TI8 Perspective - What a Crazy Game (Liquid vs OG)",
+                        "thumbnails":{
+                            "default":{
+                                "height":90,
+                                "url":"https:\/\/i.ytimg.com\/vi\/1ERsRZVRteI\/default.jpg",
+                                "width":120
+                            },
+                            "medium":{
+                                "height":180,
+                                "url":"https:\/\/i.ytimg.com\/vi\/1ERsRZVRteI\/mqdefault.jpg",
+                                "width":320
+                            },
+                            "high":{
+                                "height":360,
+                                "url":"https:\/\/i.ytimg.com\/vi\/1ERsRZVRteI\/hqdefault.jpg",
+                                "width":480
+                            },
+                            "standard":{
+                                "height":480,
+                                "url":"https:\/\/i.ytimg.com\/vi\/1ERsRZVRteI\/sddefault.jpg",
+                                "width":640
+                            },
+                            "maxres":{
+                                "height":720,
+                                "url":"https:\/\/i.ytimg.com\/vi\/1ERsRZVRteI\/maxresdefault.jpg",
+                                "width":1280
+                            }
+                        },
+                        "localized":{
+                            "description":"\ud83d\udc99Win Skins Now: https:\/\/gamdom.com\/tradeup\n\ud83d\udd34Subscribe for More Videos: http:\/\/goo.gl\/SS787Y\n\u25baMIRACLE- Invoker TI8 Perspective - What a Crazy Game (Liquid vs OG)\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\u25cf Submit your best Replay , Pls email:  justwanplayagame@gmail.com\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\u25cfSocial Media:\n\u25cf Facebook: https:\/\/www.facebook.com\/Justwanplayagame\/\n\u25cf Twitter: https:\/\/twitter.com\/justwanplayagam\n\u25cf VK: http:\/\/vk.com\/justwanplayagame\n\u25cf Google+: https:\/\/plus.google.com\/+JustWanPlayAGameBro\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n\ud83d\udd25My Dota 2 Playlists:\n\u25cf Miracle, Always Miracle: https:\/\/goo.gl\/Io5frD\n\u25cf Mushi, Be Like Mushi: https:\/\/goo.gl\/4SvCee\n\u25cf Midone, The Solo Mid One: https:\/\/goo.gl\/n29HVg\n\u25cf The International 2016 Highlights: https:\/\/goo.gl\/SJfzuR\n\u25cf !Attacker, The Best Kunkka: https:\/\/goo.gl\/GxY6Wc\n\u25cf Sumail, the Best Storm Spirit: https:\/\/goo.gl\/hYiG9D\n\u25cf Dendi, The Living Legend: https:\/\/goo.gl\/ejukAh\n\u25cf Arteezy, Positive Mental Attitude: https:\/\/goo.gl\/BRjquU\n\u25cf w33, The Imba w33haa: https:\/\/goo.gl\/Mwc7Pb\n\u25cf s4, The Son of Magnus: https:\/\/goo.gl\/NcY5It\n\u25cf Ar1se, The Best Magnus: https:\/\/goo.gl\/sYvMy7\n\u25cf Manila Major Epic Game: https:\/\/goo.gl\/xLIQ5q\n\u25cf Dota 2 Random Proplay-: https:\/\/goo.gl\/x2ynVV\n\u25cf TOP10\/Best Moments of Tournament: https:\/\/goo.gl\/5NJUH8\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\nWelcome to my JustWant2PlayAGame Dota 2  channel\nHere the find highlights from random pub match, random pro match, major tournaments and many other interesting dota movies. \nRemember to SUBSCRIBE to be notified when we publish new videos or highlights!\n\nDota 2 Team: OG, Wings, Secret, Fnatic, Liquid, LGD, IG, Newbee, EG, Navi, Empire, COL, Xctn, VGR, VG, VP, Ehome, TNC, Escape Gaming, Alliance, Mineski, LFY etc\n\nEnjoy and Make sure to subscribe to my channel if you liked the video!\n\nMatch id:\n4061952570",
+                            "title":"MIRACLE- Invoker TI8 Perspective - What a Crazy Game (Liquid vs OG)"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+
+### Changelog
+
+2018-08-17 : initial commit
