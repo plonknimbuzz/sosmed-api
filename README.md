@@ -440,7 +440,7 @@ $obj->api('ig', 'hashtag_info', ['hashtag'=> 'jokowi'])->output();
         "smd_type":"instagram",
         "hashtag_id":"17842287xxxxx",
         "name":"jokxxx",
-        "media_count":8xxx,
+        "media_count":88,
         "allow_following":1,
         "allow_muting_story":true,
         "non_violating":1
@@ -575,7 +575,8 @@ $obj->api('ig', 'location_fb_search', ['keyword'=>'monas'])->output();
             "status":"ok"
         }
     }
-}```
+}
+```
 
 #### Location FB Nearby
 
@@ -1451,3 +1452,4 @@ $obj->api('yt', 'video_info', ['videoId'=> 'QMG8BQCHtzs'])->output();
   - update readme
   - add all possible param (include pagination purpose)
   - add example
+  - add error code
