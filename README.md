@@ -21,9 +21,10 @@ $obj->setToken($token);
 $obj->api((string) WEB_CODENAME, (string) REQUEST_TYPE, (array) REQUEST_PARAM);
 
 //example
-$resultIg = $obj->api('ig', 'user_info', ['userId'=> 23232323])->output(); //json
+$resultIg = $obj->api('ig', 'user_info', ['userId'=> '2289707047'])->output(); //json
+echo $resultIg;
 $resultTw = $obj->api('tw', 'search', ['keyword'=> 'php', 'otherParam'=> 'otherValue'])->output_array();//array
-
+print_r($resultTw);
 ```
 ## API documentation 
 
@@ -45,6 +46,12 @@ Untuk mendapatkan info dari user berdasarkan userid ataupun username (salah satu
 | --- | --- | --- |
 | userId | big int | **required** valid instagram userid (*prefer*) |
 | userName | string | **required** valid instagram username |
+
+contoh:
+```php
+$obj->api('ig', 'user_info', ['userId'=> '2289707047'])->output();
+$obj->api('ig', 'user_info', ['userName'=> 'jokowi'])->output();
+```
 
 output:
 ```json
@@ -82,6 +89,12 @@ Untuk mendapatkan informasi dari suatu media /postingan di Instagram baik berupa
 | --- | --- | --- |
 | mediaId | string | **required** valid instagram media id (*prefer*) |
 | mediaUrl | string | **required** valid instagram media url |
+
+contoh:
+```php
+$obj->api('ig', 'media_info', ['mediaId'=> '1848426293047533255_1763799687'])->output();
+$obj->api('ig', 'media_info', ['mediaUrl'=> 'https://www.instagram.com/p/Bmm7euOlx7H'])->output();
+```
 
 ```json
 {
@@ -133,13 +146,19 @@ Untuk mendapatkan user-user yang melakukan like terhadap media/postingan tersebu
 | mediaId | string | **required** valid instagram media id (*prefer*) |
 | mediaUrl | string | **required** valid instagram media url |
 
+contoh:
+```php
+$obj->api('ig', 'media_likers', ['mediaId'=> '1848426293047533255_1763799687'])->output();
+$obj->api('ig', 'media_likers', ['mediaUrl'=> 'https://www.instagram.com/p/Bmm7euOlx7H'])->output();
+```
+
 ```json
 {
 	"ok": 0,
 	"data": {
 		"smd_type": "instagram",
 		"media_id": "1833762174105693829_31302xxxx",
-		"media_url": "https://www.instagram.com/p/Bly1PtOxxx/?taken-by=plonknimbuzz",
+		"media_url": "https://www.instagram.com/p/Bly1PtOxxx",
 		"like_count": 5,
 		"likers": [
 			{
@@ -174,6 +193,14 @@ Untuk mendapatkan comment-comment pada suatu media/postingan tersebut.
 | --- | --- | --- |
 | mediaId | string | **required** valid instagram media id (*prefer*) |
 | mediaUrl | string | **required** valid instagram media url |
+| maxId | string | *optional* for backward pagination (get older comment) |
+| minId | string | *optional* for forward pagination (get newer comment) |
+
+contoh:
+```php
+$obj->api('ig', 'media_comments', ['mediaId'=> '1848426293047533255_1763799687'])->output();
+$obj->api('ig', 'media_comments', ['mediaUrl'=> 'https://www.instagram.com/p/Bmm7euOlx7H'])->output();
+```
 
 ```json
 {
@@ -235,6 +262,11 @@ Untuk mendapatkan user story yang paling baru
 | userId | big int | **required** valid instagram userid (*prefer*) |
 | userName | string | **required** valid instagram username |
 
+contoh:
+```php
+$obj->api('ig', 'user_story', ['userId'=> '2289707047'])->output();
+$obj->api('ig', 'user_story', ['userName'=> 'jokowi'])->output();
+```
 
 ```json
 {
@@ -342,13 +374,39 @@ Untuk mendapatkan user story yang paling baru
 }
 ```
 
+#### Generate UUID
+Untuk membuat instagram unique id yang digunakan untuk keperluan tertentu
+
+contoh:
+```php
+$obj->api('ig', 'generate_uuid', [])->output();
+```
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "uuid":"9a44b71d-3500-49a0-9e4e-ac82b28d98dc"
+    }
+}
+```
+
 #### Hashtag Media
 Untuk list media dari suatu hashtag (valid hashtag)
 
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | hashtag | string | **required** hashtag keyword without \# |
+| uuid | string | *optional* valid ig UUID |
+| maxId | string | *optional* for pagination |
 
+**NOTE:** gunakan uuid yang sama untuk proses pagination
+
+contoh:
+```php
+$obj->api('ig', 'hashtag_media', ['hashtag'=> 'jokowi'])->output();
+```
 
 ```json
 {
@@ -369,6 +427,11 @@ Untuk mendapatkan informasi mengenai suatu hashtag (valid hashtag)
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | hashtag | string | **required** valid instagram hashtag without \# |
+
+contoh:
+```php
+$obj->api('ig', 'hashtag_info', ['hashtag'=> 'jokowi'])->output();
+```
 
 ```json
 {
@@ -391,24 +454,36 @@ Untuk mencari list hashtag dari suatu keyword
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | hashtag | string | **required** hashtag keyword without \# |
+| exclude | array | *optional* valid list hashtag id in array |
+| rankToken | string | *optional* for pagination |
+
+contoh:
+```php
+$obj->api('ig', 'hashtag_search', ['hashtag'=> 'jokowi'])->output();
+```
 
 ```json
 {
-	"ok":1,
+    "ok":1,
     "data":{
         "smd_type":"instagram",
-        "hashtag_search":[
-            {
-                "hashtag_id":"17842287427071865",
-                "name":"jokowi",
-                "media_count":845547,
-                "allow_following":null,
-                "allow_muting_story":null,
-                "non_violating":null
-            },
-			//...
-		]
-	}
+        "hashtag_search":{
+            "results":[
+                {
+                    "hashtag_id":"17842287427071865",
+                    "name":"jokowi",
+                    "media_count":856708,
+                    "allow_following":null,
+                    "allow_muting_story":null,
+                    "non_violating":null
+                },
+				//...
+            ],
+            "has_more":true,
+            "rank_token":"86c1bbc0-fa9b-4498-b8b9-5d8b3da0ea76",
+            "status":"ok"
+        }
+    }
 }
 ```
 
@@ -422,6 +497,13 @@ Untuk mencari list lokasi berdasarkan posisi garis bujur dan keyword
 | lng | string | **required** longitude |
 | keyword | string | *optional* If provided, Instagram does a worldwide location text search, but lists locations closest to your lat/lng first. |
 
+contoh:
+```php
+$obj->api('ig', 'location_search', ['lat'=> '6.1697222222222', 'lng'=>'106.83083333333'])->output();
+$obj->api('ig', 'location_search', ['lat'=> '6.1697222222222', 'lng'=>'106.83083333333', 'keyword'=>'masjid'])->output();
+```
+
+**Note:** harusnya contoh ke-2 menghasilkan list masjid di sekitar monas (jakarta), akan tetapi malah menghasilkan list masjid di seluruh indonesia, ex: masjid banda aceh, masjid al-akbar surabaya. Hal ini dikarenakan tidak semua lokasi pernah didaftarkan di IG, berbeda dengan gmap yang melakukan pencatatan secara aktif.
 
 ```json
 {
@@ -446,7 +528,6 @@ Untuk mencari list lokasi berdasarkan posisi garis bujur dan keyword
 
 ```
 
-
 #### Location FB Search
 
 Untuk mencari list lokasi Facebook berdasarkan keyword. Posisi yang ditemukan tidak dapat digunakan untuk di attach pada IG, hasil ini bisa digunakan untuk location search
@@ -454,35 +535,99 @@ Untuk mencari list lokasi Facebook berdasarkan keyword. Posisi yang ditemukan ti
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | keyword | string | *required* search keyword. |
+| exclude | array | *optional* valid list fb location id in array |
+| rankToken | string | *optional* for pagination |
+
+contoh:
+```php
+$obj->api('ig', 'location_fb_search', ['keyword'=>'monas'])->output();
+```
+
+```json
+{
+    "ok":1,
+    "data":{
+        "smd_type":"instagram",
+        "location_fb_search":{
+            "items":[
+                {
+                    "location":{
+                        "pk":"1022293376",
+                        "name":"Monas",
+                        "address":"Jalan Medan Merdeka",
+                        "city":"Jakarta, Indonesia",
+                        "short_name":"Monas",
+                        "lng":106.82596866742,
+                        "lat":-6.1767270457065,
+                        "external_source":"facebook_places",
+                        "facebook_places_id":"739273872776036"
+                    },
+                    "title":"Monas",
+                    "subtitle":"Jalan Medan Merdeka, Jakarta, Indonesia",
+                    "media_bundles":[
+
+                    ]
+                },
+                //...
+            ],
+            "has_more":true,
+            "rank_token":"53524478-400f-49a6-84ca-f4d9cb54d213",
+            "status":"ok"
+        }
+    }
+}```
+
+#### Location FB Nearby
+
+Untuk mencari list lokasi Facebook terdekat berdasarkan posisi garis bujur dan keyword. Posisi yang ditemukan tidak dapat digunakan untuk di attach pada IG, hasil ini bisa digunakan untuk location search
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| lat | string | **required** latitude |
+| lng | string | **required** longitude |
+| keyword | string | *optional* If provided, Instagram does a worldwide location text search, but lists locations closest to your lat/lng first. |
+| exclude | array | *optional* valid list fb location id in array |
+| rankToken | string | *optional* for pagination |
+
+
+contoh:
+```php
+$obj->api('ig', 'location_fb_nearby', ['lat'=> '6.1697222222222', 'lng'=>'106.83083333333'])->output();
+```
 
 
 ```json
 {
-	"ok":1,
+    "ok":1,
     "data":{
         "smd_type":"instagram",
-        "location_fb_search":[
-            {
-                "location":{
-                    "pk":"1022293376",
-                    "name":"Monas",
-                    "address":"Jalan Medan Merdeka",
-                    "city":"Jakarta, Indonesia",
-                    "short_name":"Monas",
-                    "lng":106.82596866742,
-                    "lat":-6.1767270457065,
-                    "external_source":"facebook_places",
-                    "facebook_places_id":"739273872776036"
-                },
-                "title":"Monas",
-                "subtitle":"Jalan Medan Merdeka, Jakarta, Indonesia",
-                "media_bundles":[
+        "location_media":{
+            "items":[
+                {
+                    "location":{
+                        "pk":"250557511",
+                        "name":"Djakarta Cafe",
+                        "address":"Gedung Djakarta Theater Lt Ground Lobby Area",
+                        "city":"Jakarta, Indonesia",
+                        "short_name":"Djakarta Cafe",
+                        "lng":106.86953,
+                        "lat":-6.14371,
+                        "external_source":"facebook_places",
+                        "facebook_places_id":"631359280274702"
+                    },
+                    "title":"Djakarta Cafe",
+                    "subtitle":"Gedung Djakarta Theater Lt Ground Lobby Area, Jakarta, Indonesia",
+                    "media_bundles":[
 
-                ]
-            },
-			//...
-		]
-	}
+                    ]
+                },
+				//...
+            ],
+            "has_more":true,
+            "rank_token":"56cc463c-24ff-49a9-8542-26ecf33e08b3",
+            "status":"ok"
+        }
+    }
 }
 ```
 
@@ -494,6 +639,10 @@ Untuk mencari list media dari suatu lokasi
 | --- | --- | --- |
 | location_id | Big Int | *required* valid instagram location id. |
 
+contoh:
+```php
+$obj->api('ig', 'location_media', ['location_id'=>'147276218683873'])->output();
+```
 
 ```json
 {
@@ -518,6 +667,10 @@ Untuk mencari info mengenai user
 | userId | big int | **required** valid twitter userid (*prefer*) |
 | userName | string | **required** valid twitter username |
 
+contoh:
+```php
+$obj->api('tw', 'user_info', ['userName'=> 'jokowi'])->output();
+```
 
 ```json
 {
@@ -681,6 +834,19 @@ Mencari tweet berdasarkan keyword
 | Param | Type | Keterangan |
 | --- | --- | --- |
 | keyword | string | **required** keyword |
+| geocode | string | *optional* geocode location and radius (mi/km). maximum radius is 1000 unit ex: *6.1697222222222, 106.83083333333, 2km* |
+| lang | string | *optional* Restricts tweets to the given language, given by an [ISO 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code |
+| result_type | string | *optional* * recent : return only the most recent results in the response. * popular : return only the most popular results in the response. default *mixed* both recent and popular. |
+| count | int | *optional* number tweets per page. default: 15, max: 100 |
+| until | date |  *optional* Returns tweets created before the given date. Format Y-m-d, max 7 day |
+| since_id | big int |  *optional* Returns results with an ID greater than (that is, more recent than) the specified ID. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available. |
+| max_id | big int |  *optional* Returns results with an ID less than (that is, older than) or equal to the specified ID. |
+| include_entities | boolean|  *optional* The entities node will not be included when set to false. |
+
+contoh:
+```php
+$obj->api('tw', 'search_tweet', ['keyword'=> 'jokowi'])->output();
+```
 
 ```json
 {
@@ -1040,7 +1206,7 @@ Mencari tweet berdasarkan keyword
 
 #### Search Location
 
-Mencari lokasi twitter
+Mencari lokasi suatu tempat pada twitter
 
 | Param | Type | Keterangan |
 | --- | --- | --- |
@@ -1048,8 +1214,12 @@ Mencari lokasi twitter
 | lat | string | *optional* latitude |
 | lng | string | *optional* longitude |
 
-**Note:** Required salah satu diantaranya
+**Note:** Required minimal 1 diantaranya.
 
+contoh:
+```php
+$obj->api('tw', 'search_location', ['keyword'=> 'monas'])->output();
+```
 
 ```json
 {
@@ -1177,6 +1347,10 @@ Mencari info terhadap suatu video
 | --- | --- | --- |
 | videoId | string | **required** valid youtube video Id |
 
+contoh:
+```php
+$obj->api('yt', 'video_info', ['videoId'=> 'QMG8BQCHtzs'])->output();
+```
 
 ```json
 {
@@ -1260,8 +1434,20 @@ Mencari info terhadap suatu video
 }
 ```
 
+### Error Code
 
+| Code | Keterangan |
+| --- | --- |
+| 699 | Forbidden IP Address |
+| 700 | Error code not recognized |
+| 701 | Web module not registered |
+| 702 | Type not recognized |
+| 703 | Missing required parameter |
 
 ### Changelog
 
 - 2018-08-17 : init commit
+- 2018-08-19: 
+  - update readme
+  - add all possible param (include pagination purpose)
+  - add example
