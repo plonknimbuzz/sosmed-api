@@ -6,7 +6,7 @@ class SosmedAPI{
 
 	private $token;
 	private $response;
-	private $apiUrl = 'http://localhost/sosmed-api/api/json';
+	private $apiUrl = 'http://localhost/sosmed-api/json';
 	
 	function  __construct($apiUrl=null){
 		if(!empty($apiUrl) && filter_var($apiUrl, FILTER_VALIDATE_URL)) $this->apiUrl = $apiUrl;

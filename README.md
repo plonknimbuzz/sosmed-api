@@ -1435,6 +1435,228 @@ $obj->api('yt', 'video_info', ['videoId'=> 'QMG8BQCHtzs'])->output();
 }
 ```
 
+### Facebook
+
+#### User Info
+
+Mencari info terhadap suatu video
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| userId | big int | **required** valid facebook userid (*prefer*) |
+| userName | string | **required** valid facebook username |
+| page | int | *optional* pagination |
+
+
+contoh:
+```php
+$obj->api('fb', 'user_info', ['userId'=> '100000590125569'])->output();
+```
+
+```json
+{
+    "user_info": {
+        "name": "Ammar Faizi",
+        "profile_picture": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/p320x320/40309752_2326536907375957_7953345096416493568_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeEL5c6vUfQLAck-vPhElGIRp5oGCeMdHpxPdhZF_JwsRPFzdBAiM2Lrl-Z3qAQ-r7T0ds8723LCmVvfrobU8v5v0KX7U7ZSqgHTCTFVGz7dDQ&oh=b8cda93964bc54fe02dddbc7beae03ac&oe=5BF0EA19",
+        "profile_url": "https://www.facebook.com/ammarfaizi2",
+        "extended_info": {
+            "work": [
+                "PHP LTM Group",
+                "Tea Inside",
+                "Perpustakaan Simpang 5",
+                "Depot Kubur Anggur",
+                "Crayner System",
+                "LKC (Las Karbit Community)"
+            ],
+            "education": [
+                "Institut Teknologi Bandung",
+                "SMA Negeri 3 Sragen"
+            ],
+            "living": {
+                "current_city": "Jakarta, Indonesia",
+                "home_town": "Surakarta"
+            },
+            "contact_info": {
+                "mobile": "+60 14-571 5475",
+                "address": [
+                    "Crayner Base, Blok A, No. 2, Surakarta, Indonesia"
+                ],
+                "facebook": "/ammarfaizi2",
+                "github": "ammarfaizi2",
+                "youtube": "ammarfaizi2",
+                "yahoo!_messenger": "ammar_nofan_faizi@yahoo.com",
+                "line": "ammarfaizi2",
+                "bbm": "D15251A9",
+                "instagram": "ammarfaizi12",
+                "twitter": "AmmarFaizi",
+                "websites": [
+                    "https://messenger.teainside.org/",
+                    "https://blog.ammarfaizi.net/",
+                    "https://www.ammarfaizi.net/"
+                ],
+                "email": [
+                    "ammarfaizi2@gmail.com",
+                    "ammarfaizi12@gmail.com",
+                    "ammar_nofan_faizi@yahoo.com"
+                ]
+            },
+            "basic_info": {
+                "birthday": "7 December 1996",
+                "gender": "Male",
+                "interested_in": "Women",
+                "languages": "English language, Bahasa Indonesia and Bahasa Jawa",
+                "religious_views": "Islam",
+                "political_views": ""
+            }
+        }
+    },
+    "user_posts": [
+        {
+            "post_url": "https://www.facebook.com/679788059065243",
+            "story_fbid": "679788059065243",
+            "type": "photo",
+            "title": "Curious Pete",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/c0.118.959.320/s600x600/40137839_2326522024044112_6361533313466761216_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeHLeemHPLCyk5u6i1p0_RfU22WfpeMSKluvZYMbdTCRP953B2Q9CK4XYwQlh4E0KZ6SDacGKJA7N8ODD2IA9_CN-gb5xr00THlyjaxZtBitLw&oh=b7eaa32cb89a71d0056d497175195219&oe=5BFD303E",
+            "caption": null,
+            "alt_predict": null,
+            "abbr_time": "6 hours"
+        },
+        {
+            "post_url": "https://www.facebook.com/2329626687066979",
+            "story_fbid": "2329626687066979",
+            "type": "photo",
+            "title": "Ammar Faizi",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/s200x200/40377607_2329626607066987_1328481715919781888_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeFLH2lUALxj875HLD-3WvZkko0nh_fqxF6IxXV5E7yTI3Bf2aFYwGcpzDGJ6BNIRUedJ36ljrmv2ZYoXb0BM2Wz2FNX7ifXSpG8Ws7wfXLH9g&oh=edfba0fba48047fa3b6cc86940f7aee1&oe=5BF91750",
+            "caption": null,
+            "alt_predict": "No automatic alt text available.",
+            "abbr_time": "Yesterday at 10:49"
+        },
+        {
+            "post_url": "https://www.facebook.com/1909974039045750",
+            "story_fbid": "1909974039045750",
+            "type": "photo",
+            "title": "IGON",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/c16.0.98.197/p130x130/40235663_1909973439045810_4339216948186316800_n.png.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeGUpAEFYf8xGYkgD5Yf3Pvqj8k7R05obbYJY12KX2_65OdqTvV9XDU_M6yDVl7N3fhGa-bZ_GqsbhP9yp0h0KIL8LujVWMrJ-dOxd-fSmagug&oh=8c546f800cbe2876bd3e96d73ef51baf&oe=5C3B4223",
+            "caption": null,
+            "alt_predict": "No automatic alt text available.",
+            "abbr_time": "29 August at 14:04"
+        },
+        {
+            "post_url": "https://www.facebook.com/2328461823850132",
+            "story_fbid": "2328461823850132",
+            "type": "video",
+            "title": "Ahmad Sirojul Kamilin > \u200ePojok Programmer",
+            "thumnail_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/c0.118.959.320/s600x600/40137839_2326522024044112_6361533313466761216_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeHLeemHPLCyk5u6i1p0_RfU22WfpeMSKluvZYMbdTCRP953B2Q9CK4XYwQlh4E0KZ6SDacGKJA7N8ODD2IA9_CN-gb5xr00THlyjaxZtBitLw&oh=b7eaa32cb89a71d0056d497175195219&oe=5BFD303E",
+            "caption": null,
+            "alt_predict": "Facebook logo",
+            "abbr_time": "29 August at 11:46"
+        },
+        {
+            "post_url": "https://www.facebook.com/10154701721787330",
+            "story_fbid": "10154701721787330",
+            "type": "video",
+            "title": "Channel 4",
+            "thumnail_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t15.0-10/cp0/e15/q65/p320x320/22264396_10154701731982330_6652764252555706368_n.jpg?_nc_cat=1&efg=eyJpIjoiYiJ9&_nc_eui2=AeFv_psEmWai35npFBvUSH84XoIE6zPr2Dep2j1N0X7mMl8amGb1XVo0IctsAP9mAsBSbs1px1iJFYc_GLsZxId0RZWe1USmMJjDsCYEkQCDJw&oh=45b715baa8fc55ef323bb46b743d0ef9&oe=5BFBBC48",
+            "caption": null,
+            "alt_predict": null,
+            "abbr_time": "28 August at 18:30"
+        },
+        {
+            "post_url": "https://www.facebook.com/2326544067375241",
+            "story_fbid": "2326544067375241",
+            "type": "text",
+            "title": "Ammar Faizi",
+            "text": "A Telegram group for those who are interesting with Scraping",
+            "abbr_time": "27 August at 22:37"
+        },
+        {
+            "post_url": "https://www.facebook.com/2326541844042130",
+            "story_fbid": "2326541844042130",
+            "type": "text",
+            "title": "Ammar Faizi",
+            "text": "Tea Inside Bot S4",
+            "abbr_time": "27 August at 22:35"
+        }
+    ]
+}
+
+```
+
+#### Group Info
+
+Mencari info suatu grup beserta post nya
+
+| Param | Type | Keterangan |
+| --- | --- | --- |
+| groupId | big int | **required** valid facebook groupId |
+
+
+contoh:
+```php
+$obj->api('fb', 'group_info', ['userId'=> '362603284210666'])->output();
+```
+
+```json
+{
+    "group_info": {
+        "group_name": "RELAWAN PENDUKUNG PRABOWO SANDI 2019 - RPP2019",
+        "group_url": "https://www.facebook.com/groups/362603284210666"
+    },
+    "group_posts": [
+        {
+            "post_url": "https://www.facebook.com/545358529268473",
+            "story_fbid": "545358529268473",
+            "type": "photo",
+            "title": "Don Muzakir > \u200eRELAWAN PENDUKUNG PRABOWO SANDI 2019 - RPP2019",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/c0.49.960.477/s206x206/40301851_479761449158510_8653750676372848640_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeHSQiyv196HMM24ovvVnDbTYLZHHzAuVckRA_1-k3PuP4jyuUlRlo4fXIvUU7wlTQ90wEgjQC2USNj_DA2k98PiDFFXzEJ4hM2BllOgGmJDsQ&oh=3a8906226ea253cca37a192f03e9ee85&oe=5BF7F311",
+            "caption": null,
+            "alt_predict": "Image may contain: 2 people, people smiling, text",
+            "abbr_time": "28 August at 21:24"
+        },
+        {
+            "post_url": "https://www.facebook.com/553499895121003",
+            "story_fbid": "553499895121003",
+            "type": "photo",
+            "title": "Muzakir Don shared a post.",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/s240x240/40502497_1355073907957525_1153135952323936256_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeHTfJ1shlI1g0PvqFFCvJ1v_NcOmk0faCLfGlVm88tDZgud8mbr6YqDLnshkd-hiRvffHdIUxeCbJfFTNjXRE3B2D2ehuMgwQUsF9zmSrJwAw&oh=bb54346982ec564a3ab9eed9d0b99d83&oe=5BFA768D",
+            "caption": null,
+            "alt_predict": "Image may contain: one or more people and people standing",
+            "abbr_time": "1 hr"
+        },
+        {
+            "post_url": "https://www.facebook.com/553179938486332",
+            "story_fbid": "553179938486332",
+            "type": "photo",
+            "title": "Muzakir Don > \u200eRELAWAN PENDUKUNG PRABOWO SANDI 2019 - RPP2019",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/s200x200/40511874_10213285012067268_2176579002003619840_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeG8CUjsCZnPt5me2JawSrNugZvoy9DJdPXXB6_zFb80J8jY40yCD1VIN3Oea2OuSthVGMnyQz97U1yADSiBMiNckjqJbVn7r5nQUItJOsbotA&oh=c563c7866f0af5ebe0ce86a422a3ac62&oe=5C398602",
+            "caption": null,
+            "alt_predict": "Image may contain: text and outdoor",
+            "abbr_time": "15 hours"
+        },
+        {
+            "post_url": "https://www.facebook.com/538463363291323",
+            "story_fbid": "538463363291323",
+            "type": "photo",
+            "title": "Meni Ananda > \u200eRELAWAN PENDUKUNG PRABOWO SANDI 2019 - RPP2019",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/s200x200/40027866_1387565648043975_7487952705193771008_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeFtKFkBnizkuMeWP9XBZp4KIBSDNVpQza79_DJmY8oBJXtaHtTZKG8XUUjQ0O8JC88u3RQZ7pFb6xOARUV55u2JsspUln0NNvqzHUUjwFoVJA&oh=9a33f0f738be1d1ebb186f91dcf0ea74&oe=5BF7DE75",
+            "caption": null,
+            "alt_predict": "Image may contain: 8 people, people smiling, text",
+            "abbr_time": "25 August at 07:37"
+        },
+        {
+            "post_url": "https://www.facebook.com/540027406468252",
+            "story_fbid": "540027406468252",
+            "type": "photo",
+            "title": "Mas A'idz > \u200eRELAWAN PENDUKUNG PRABOWO SANDI 2019 - RPP2019",
+            "photo_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t1.0-0/cp0/e15/q65/p200x200/40071139_831681843887271_5127119180989988864_n.jpg?_nc_cat=0&efg=eyJpIjoiYiJ9&_nc_eui2=AeFHOe1FqhZGvhODnyp9V1nEtKivU9yXjQUrJ-83WLFJp9pzp6A97yOdLESje-6OfRKOMSEIgFYMyaAkEh_R-OD75clQeuSBpoJO68P-gsPTbA&oh=5cf201b701ee5d20b8584c01d73e011e&oe=5C2C8A58",
+            "caption": null,
+            "alt_predict": "Image may contain: 4 people, people smiling, text",
+            "abbr_time": "26 August at 20:28"
+        }
+    ]
+}
+```
+
 ### Error Code
 
 | Code | Keterangan |
